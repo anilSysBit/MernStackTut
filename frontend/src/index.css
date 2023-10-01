@@ -1,0 +1,175 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  /* color: #646cff; */
+  color: white;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+  /* color: white; */
+}
+
+body {
+  /* margin: 0;
+  display: flex; */
+  /* place-items: center; */
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+p{
+  color: white;
+}
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.navbar{
+  padding: 20px;
+  /* border: 2px solid black; */
+  width: 100%;
+  box-shadow: 0px 0px 10px rgb(94, 93, 93);
+}
+
+.workout-details{
+  width: 100%;
+  /* border: 2px solid black; */
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgb(78, 78, 78);
+  margin-top: 25px;
+  line-height: 1.5;
+  border-radius: 5px;
+}
+.home{
+  height: 80vh;
+  width: 100%;
+  margin-top: 20px;
+  /* overflow: hidden; */
+}
+.home .workouts{
+  display: flex;
+  height: 100%;
+}
+.main_workout{
+  width: 50%;
+  float: left;
+  height: 100%;
+  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+
+.workout-details h4{
+  /* text-align: center; */
+  font-size: 25px;
+  color: rgb(120, 230, 120);
+}
+
+.workoutform{
+  width: 50%;
+  display: flex;
+  padding: 20px;
+  place-content: center;
+  /* place-items: center; */
+  float: right;
+  /* place-items: center; */
+  /* border:2px solid black; */
+}
+
+.workoutform p{
+  width: 100%;
+  border: 0.2px solid red;
+  padding: 5px;
+  color: red;
+  margin-top: 10px;
+}
+
+input{
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
+  width: 100%;
+}
+
+button{
+  margin-top: 10px;
+}
+
+
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+input.error{
+  border: 0.2px solid rgb(244, 79, 79);
+  animation-name: ErrorAnimation;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+@keyframes ErrorAnimation {
+  0%{ transform: translateX(0px);}
+  10%{ transform: translateX(5px);}
+  20%{ transform: translateX(-5px);}
+  30%{ transform: translateX(5px);}
+  40%{ transform: translateX(-5px);}
+  100%{transform: translateX(0px);}
+}
