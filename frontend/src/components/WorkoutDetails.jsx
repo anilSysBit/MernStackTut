@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
 import { useWorkoutContext } from '../hooks/useWorkoutContext'
-
+import { useAuthContext } from '../hooks/useAuthContext'
 // date fns
 
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
@@ -14,8 +14,12 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 const WorkoutDetails = ({workout}) => {
   
   const {dispatch} = useWorkoutContext()
-
+  const {user} = useAuthContext()
   const handleClick =()=>{
+
+    if(!user){
+      return
+    }
     let response;
     confirmAlert({
       title: `Confirm to Delete workout (${workout.title})`,
@@ -25,7 +29,11 @@ const WorkoutDetails = ({workout}) => {
           label: 'Yes',
           onClick: async() => {
             response = await fetch('http://localhost:4000/api/workout/' + workout._id,{
-            method:'DELETE'})
+            method:'DELETE',
+            headers:{
+              'Authorization':`dhfopwiebcbcbsdowuwydj ${user.token}`
+            }
+          })
             const data = await response.json()
       
             if(response.ok){

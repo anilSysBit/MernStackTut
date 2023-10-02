@@ -74,8 +74,31 @@ button:focus-visible {
   /* border: 2px solid black; */
   width: 100%;
   box-shadow: 0px 0px 10px rgb(94, 93, 93);
+  display: flex;
+  place-content: space-between;
 }
 
+
+.login,.signup{
+  line-height: 1.5;
+  width: 50%;
+  /* border: 2px solid black; */
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,30%);
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgb(68, 68, 68);
+  border-radius: 10px;
+}
+
+nav div{
+  display: flex;
+  column-gap: 15px;
+}
+h3{
+  font-size: 25px;
+  margin-bottom: 20px;
+}
 .workout-details{
   width: 100%;
   /* border: 2px solid black; */
@@ -102,6 +125,7 @@ button:focus-visible {
   overflow: scroll;
   overflow-y: scroll;
   overflow-x: hidden;
+  padding: 15px;
 }
 
 
@@ -130,17 +154,42 @@ button:focus-visible {
   margin-top: 10px;
 }
 
+.workoutform form{
+  /* border: 2px solid black; */
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgb(64, 64, 64);
+}
+
 input{
-  padding: 10px;
+  padding: 15px;
   margin: 10px;
   font-size: 16px;
   width: 100%;
+  border: none;
+  border-radius: 10px;
 }
-
+ input:focus{
+  outline: none;
+ }
 button{
   margin-top: 10px;
 }
 
+nav div span{
+  cursor: pointer;
+  font-weight: 600;
+}
+
+nav div span:hover{
+  color: rgb(82, 82, 239);
+}
+.error{
+  border: .2px solid rgb(229, 98, 98);
+  color: rgb(232, 92, 92);
+  padding: 5px;
+  margin-top: 10px;
+  
+}
 
 
 
@@ -159,10 +208,16 @@ button{
 
 input.error{
   border: 0.2px solid rgb(244, 79, 79);
+  padding: 10px;
+  color: white;
   animation-name: ErrorAnimation;
   animation-duration: .5s;
   animation-iteration-count: 1;
   animation-timing-function: linear;
+
+}
+input.error:focus{
+  border:none;
 }
 
 @keyframes ErrorAnimation {

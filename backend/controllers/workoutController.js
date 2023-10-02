@@ -5,14 +5,16 @@ const Workout = require("../models/workoutModel")
 
 
 const GetWorkouts = async(req,res)=>{
-    const workouts = await Workout.find({}).sort({CreatedAt:-1})
+    const user_id = req.user._id
+
+    const workouts = await Workout.find({user_id}).sort({CreatedAt:-1})
     res.status(200).send(workouts)
 }
 
 
 const GetWorkout = async(req,res)=>{
     const {id} = req.params
-
+    const user_id = req.user._id
     if (!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).send({error:'No Workout with that id'})
     }
@@ -30,23 +32,23 @@ const CreateWorkout = async(req,res)=>{
 
     let emptyFields = []
 
+
     if(!title){
         emptyFields.push('title')
-        return res.status(400).json({error:'Please fill in title field',emptyFields})
     }
     if(!load){
         emptyFields.push('load')
-        return res.status(400).json({error:'Please fill in the load field',emptyFields})
     }
     if(!reps){
         emptyFields.push('reps')
-        return res.status(400).json({error:'Please fill in Reps field',emptyFields})
     }
+
     if(emptyFields.length > 0){
-        return res.status(400).json({error:'Please fill in all the fields',emptyFields})
+        return res.status(400).json({error:(emptyFields.length == 0 || emptyFields.length == 3) ?'Fill in all the fields' :`Fill the ${emptyFields} fields`,emptyFields})
     }
     try{
-        const workout = await Workout.create({title,load,reps})
+        const user_id = req.user._id
+        const workout = await Workout.create({title,load,reps,user_id})
         res.status(200).send(workout)
     }catch(err){
         res.status(400).send({error:err.message})
